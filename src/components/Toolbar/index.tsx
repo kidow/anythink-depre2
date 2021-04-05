@@ -4,7 +4,7 @@ export interface Props {}
 
 const ReToolbar: FunctionComponent<Props> = () => {
   return (
-    <div id="toolbar" className="fixed w-192 top-0 z-10">
+    <div id="toolbar" className="fixed w-192 top-0 z-10 bg-white">
       <div className="ql-formats">
         <button className="ql-header" value="1" />
         <button className="ql-header" value="2" />
