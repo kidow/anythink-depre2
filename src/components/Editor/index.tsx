@@ -10,17 +10,18 @@ export interface Props {
     source: Sources,
     editor: any
   ) => void
+  onClear: () => void
 }
 interface State {}
 
-const ReEditor: FunctionComponent<Props> = ({ value, onChange }) => {
+const ReEditor: FunctionComponent<Props> = ({ value, onChange, onClear }) => {
   const ref = useRef<ReactQuill>(null)
   const modules = useMemo(
     () => ({
       toolbar: {
         container: '#toolbar',
         handlers: {
-          copy: () => console.log('copy')
+          clear: onClear
         }
       },
       clipboard: {

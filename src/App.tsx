@@ -19,7 +19,11 @@ const App: FunctionComponent<Props> = () => {
   return (
     <div className="w-192 mx-4 md:mx-auto container">
       <ReToolbar />
-      <ReEditor value={content} onChange={(content) => setState({ content })} />
+      <ReEditor
+        value={content}
+        onChange={(content) => setState({ content })}
+        onClear={() => setState({ content: '' })}
+      />
     </div>
   )
 }
