@@ -7,14 +7,20 @@ const ReToolbar: FunctionComponent<Props> = () => {
   return (
     <div id="toolbar" className="fixed w-192 top-0 z-10">
       <div className="ql-formats">
-        <button className="ql-header" value="1" type="button" />
-        <button className="ql-header" value="2" type="button" />
+        <button className="ql-header" value="1" />
+        <button className="ql-header" value="2" />
       </div>
       <div className="ql-formats">
         <button className="ql-bold" />
         <button className="ql-italic" />
         <button className="ql-underline" />
         <button className="ql-strike" />
+      </div>
+      <div className="ql-formats">
+        <button className="ql-list" value="ordered" />
+        <button className="ql-list" value="bullet" />
+        <button className="ql-indent" value="-1" />
+        <button className="ql-indent" value="+1" />
       </div>
       <div className="ql-formats">
         <button className="ql-link" />

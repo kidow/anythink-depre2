@@ -35,7 +35,6 @@ const ReEditor: FunctionComponent<Props> = ({ value, onChange }) => {
       value={value}
       onChange={onChange}
       placeholder="지금 떠오르는 생각은?"
-      theme="snow"
       modules={modules}
     />
   )
