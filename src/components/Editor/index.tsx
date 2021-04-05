@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react'
 import ReactQuill, { Quill } from 'react-quill'
-import { Delta, Sources } from 'quill'
+import { Delta, Sources, RangeStatic } from 'quill'
 
 export interface Props {
   value: string
@@ -18,8 +18,67 @@ const ReEditor: FunctionComponent<Props> = ({ value, onChange }) => {
   const modules = useMemo(
     () => ({
       toolbar: {
-        container: '#toolbar',
-        handlers: {}
+        container: '#toolbar'
+      },
+      keyboard: {
+        bindings: {
+          header1: {
+            key: '1',
+            ctrlKey: true,
+            handler: function (range: RangeStatic, context: any) {
+              if (!ref.current) return
+              const quill = ref.current.getEditor()
+              const format = quill.getFormat(range)
+              quill.format(
+                'header',
+                format.header ? (format.header === 2 ? 1 : false) : 1
+              )
+            }
+          },
+          header2: {
+            key: '2',
+            ctrlKey: true,
+            handler: function (range: RangeStatic, context: any) {
+              if (!ref.current) return
+              const quill = ref.current.getEditor()
+              const format = quill.getFormat(range)
+              quill.format(
+                'header',
+                format.header ? (format.header === 1 ? 2 : false) : 2
+              )
+            }
+          },
+          strike: {
+            key: 'S',
+            ctrlKey: true,
+            shiftKey: true,
+            handler: function (range: RangeStatic, context: any) {
+              if (!ref.current) return
+              const quill = ref.current.getEditor()
+              const format = quill.getFormat(range)
+              quill.format('strike', !format.strike)
+            }
+          },
+          clear: {
+            key: 'E',
+            ctrlKey: true,
+            shiftKey: true,
+            handler: function (range: RangeStatic, context: any) {
+              if (!ref.current) return
+              const quill = ref.current.getEditor()
+              quill.removeFormat(range.index, range.length)
+            }
+          },
+          divider: {
+            key: 13,
+            ctrlKey: true,
+            handler: function (range: RangeStatic, context: any) {
+              if (!ref.current) return
+              const quill = ref.current.getEditor()
+              quill.removeFormat(range.index, range.length)
+            }
+          }
+        }
       },
       clipboard: {
         matchVisual: false
