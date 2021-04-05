@@ -18,18 +18,10 @@ const ReEditor: FunctionComponent<Props> = ({ value, onChange }) => {
   const modules = useMemo(
     () => ({
       toolbar: {
-        container: [
-          [{ header: '1' }, { header: '2' }],
-          ['bold', 'italic', 'underline', 'strike'],
-          [
-            { list: 'ordered' },
-            { list: 'bullet' },
-            { indent: '-1' },
-            { indent: '+1' }
-          ],
-          ['link', 'image', 'video'],
-          ['blockquote', 'code-block']
-        ]
+        container: '#toolbar',
+        handlers: {
+          copy: () => console.log('copy')
+        }
       },
       clipboard: {
         matchVisual: false

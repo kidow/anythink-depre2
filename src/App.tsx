@@ -18,7 +18,7 @@ const App: FunctionComponent<Props> = () => {
   }, [])
   return (
     <div className="w-192 mx-4 md:mx-auto container">
-      {/* <ReToolbar /> */}
+      <ReToolbar />
       <ReEditor value={content} onChange={(content) => setState({ content })} />
     </div>
   )

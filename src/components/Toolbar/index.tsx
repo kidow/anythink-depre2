@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react'
+import { FaCopy } from 'react-icons/fa'
+import { VscClearAll } from 'react-icons/vsc'
 
 export interface Props {}
 
@@ -16,6 +18,9 @@ const ReToolbar: FunctionComponent<Props> = () => {
         <button className="ql-strike" />
       </div>
       <div className="ql-formats">
+        <select className="ql-color" />
+      </div>
+      <div className="ql-formats">
         <button className="ql-list" value="ordered" />
         <button className="ql-list" value="bullet" />
         <button className="ql-indent" value="-1" />
@@ -29,6 +34,14 @@ const ReToolbar: FunctionComponent<Props> = () => {
       <div className="ql-formats">
         <button className="ql-blockquote" />
         <button className="ql-code-block" />
+      </div>
+      <div className="ql-formats">
+        <button className="ql-copy">
+          <FaCopy />
+        </button>
+        <button className="ql-clear">
+          <VscClearAll className="w-full" />
+        </button>
       </div>
     </div>
   )
