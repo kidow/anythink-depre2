@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useEffect } from 'react'
-import { VscClearAll } from 'react-icons/vsc'
+import React, { FunctionComponent } from 'react'
+import { AiOutlineTable } from 'react-icons/ai'
 import { IoHelp } from 'react-icons/io5'
 import { FaDivide } from 'react-icons/fa'
 
@@ -9,8 +9,16 @@ const ReToolbar: FunctionComponent<Props> = () => {
   return (
     <div id="toolbar" className="fixed w-192 top-0 z-10 bg-white">
       <div className="ql-formats">
-        <button className="ql-header" value="1" data-tip="제목 1" />
-        <button className="ql-header" value="2" data-tip="제목 2" />
+        <button
+          className="ql-header"
+          value="1"
+          data-tip="제목 1 (Ctrl + Num1)"
+        />
+        <button
+          className="ql-header"
+          value="2"
+          data-tip="제목 2 (Ctrl + Num2)"
+        />
       </div>
       <div className="ql-formats">
         <button className="ql-bold" data-tip="굵게 (Ctrl + B)" />
@@ -32,6 +40,9 @@ const ReToolbar: FunctionComponent<Props> = () => {
         <button className="ql-link" data-tip="링크 (Ctrl + K)" />
         <button className="ql-image" data-tip="이미지" />
         <button className="ql-video" data-tip="동영상" />
+        <button className="ql-table" data-tip="테이블">
+          <AiOutlineTable className="w-full" />
+        </button>
       </div>
       <div className="ql-formats">
         <button className="ql-blockquote" data-tip="인용구" />
@@ -41,9 +52,6 @@ const ReToolbar: FunctionComponent<Props> = () => {
         </button>
       </div>
       <div className="ql-formats">
-        <button className="ql-clear" data-tip="정리">
-          <VscClearAll className="w-full" />
-        </button>
         <button className="ql-help" data-tip="도움말">
           <IoHelp className="w-full" />
         </button>
