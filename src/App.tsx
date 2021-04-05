@@ -1,6 +1,7 @@
 import { ReEditor, ReToolbar } from 'components'
 import React, { FunctionComponent, useEffect } from 'react'
 import { useObject } from 'services'
+import ReactTooltip from 'react-tooltip'
 
 export interface Props {}
 interface State {
@@ -24,6 +25,7 @@ const App: FunctionComponent<Props> = () => {
         onChange={(content) => setState({ content })}
         onClear={() => setState({ content: '' })}
       />
+      <ReactTooltip place="bottom" effect="solid" type="dark" />
     </div>
   )
 }

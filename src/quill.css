@@ -413,8 +413,8 @@
 }
 .ql-snow.ql-toolbar button svg,
 .ql-snow .ql-toolbar button svg {
-  float: left;
   height: 100%;
+  color: #444;
 }
 .ql-snow.ql-toolbar button:active:hover,
 .ql-snow .ql-toolbar button:active:hover {
@@ -934,17 +934,17 @@
 }
 .ql-snow .ql-tooltip.ql-editing a.ql-action::after {
   border-right: 0px;
-  content: 'Save';
+  content: '저장';
   padding-right: 0px;
 }
 .ql-snow .ql-tooltip[data-mode='link']::before {
-  content: 'Enter link:';
+  content: '링크 입력:';
 }
 .ql-snow .ql-tooltip[data-mode='formula']::before {
-  content: 'Enter formula:';
+  content: '공식 입력:';
 }
 .ql-snow .ql-tooltip[data-mode='video']::before {
-  content: 'Enter video:';
+  content: '비디오 링크:';
 }
 .ql-snow a {
   color: #06c;

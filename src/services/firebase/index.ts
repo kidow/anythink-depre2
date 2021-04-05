@@ -9,6 +9,8 @@ const config = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID
 }
 
-if (!firebase.apps.length) firebase.initializeApp(config)
+if (!firebase.apps.length) {
+  firebase.initializeApp(config)
+}
 
 export default firebase
