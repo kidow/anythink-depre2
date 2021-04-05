@@ -1,18 +1,17 @@
 import { ReEditor, ReToolbar } from 'components'
 import React, { FunctionComponent, useEffect } from 'react'
-import { useObject } from 'services'
 import ReactTooltip from 'react-tooltip'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { contentState } from 'store'
 
 export interface Props {}
-interface State {
-  content: string
-}
+interface State {}
 
 const App: FunctionComponent<Props> = () => {
-  const [{ content }, setState] = useObject<State>({
-    content: window.localStorage.getItem('anythink') || ''
-  })
+  const content = useRecoilValue(contentState)
+  const setContent = useSetRecoilState(contentState)
   useEffect(() => {
+    setContent(window.localStorage.getItem('anythink') || '')
     return () => {
       window.localStorage.setItem('anythink', content)
     }
@@ -20,7 +19,7 @@ const App: FunctionComponent<Props> = () => {
   return (
     <div className="w-192 mx-4 md:mx-auto container">
       <ReToolbar />
-      <ReEditor value={content} onChange={(content) => setState({ content })} />
+      <ReEditor value={content} onChange={(content) => setContent(content)} />
       <ReactTooltip place="bottom" effect="solid" type="dark" />
     </div>
   )
