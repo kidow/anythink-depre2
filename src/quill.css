@@ -892,7 +892,7 @@
   white-space: nowrap;
 }
 .ql-snow .ql-tooltip::before {
-  content: 'Visit URL:';
+  content: 'URL 주소:';
   line-height: 26px;
   margin-right: 8px;
 }
@@ -914,12 +914,12 @@
 }
 .ql-snow .ql-tooltip a.ql-action::after {
   border-right: 1px solid #ccc;
-  content: 'Edit';
+  content: '수정';
   margin-left: 16px;
   padding-right: 8px;
 }
 .ql-snow .ql-tooltip a.ql-remove::before {
-  content: 'Remove';
+  content: '삭제';
   margin-left: 8px;
 }
 .ql-snow .ql-tooltip a {
@@ -948,4 +948,7 @@
 }
 .ql-snow a {
   color: #06c;
+}
+.ql-editor hr {
+  margin: 16px 0;
 }

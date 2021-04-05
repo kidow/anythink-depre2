@@ -17,10 +17,7 @@ const ReToolbar: FunctionComponent<Props> = () => {
         <button className="ql-italic" data-tip="기울임꼴 (Ctrl + I)" />
         <button className="ql-underline" data-tip="밑줄 (Ctrl + U)" />
         <button className="ql-strike" data-tip="줄긋기 (Ctrl + Shift + S)" />
-        <button
-          className="ql-clean"
-          data-tip="글자 효과 없애기 (Ctrl + Shift + E)"
-        />
+        <button className="ql-clean" data-tip="글자 효과 없애기 (Ctrl + \)" />
       </div>
       <div className="ql-formats">
         <select className="ql-color" />

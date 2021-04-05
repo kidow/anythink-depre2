@@ -2,6 +2,14 @@ import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react'
 import ReactQuill, { Quill } from 'react-quill'
 import { Delta, Sources, RangeStatic } from 'quill'
 
+let BlockEmbed = Quill.import('blots/block/embed')
+
+class DividerBlot extends BlockEmbed {}
+DividerBlot.blotName = 'divider'
+DividerBlot.tagName = 'hr'
+
+Quill.register(DividerBlot)
+
 export interface Props {
   value: string
   onChange: (
@@ -18,7 +26,18 @@ const ReEditor: FunctionComponent<Props> = ({ value, onChange }) => {
   const modules = useMemo(
     () => ({
       toolbar: {
-        container: '#toolbar'
+        container: '#toolbar',
+        handlers: {
+          divider: (value: any) => {
+            console.log(value)
+            if (!ref.current) return
+            const quill = ref.current.getEditor()
+            const range = quill.getSelection(true)
+            quill.insertText(range.index, '\n')
+            quill.insertEmbed(range.index + 1, 'divider', true)
+            quill.setSelection(range.index + 2, range.length)
+          }
+        }
       },
       keyboard: {
         bindings: {
@@ -60,9 +79,8 @@ const ReEditor: FunctionComponent<Props> = ({ value, onChange }) => {
             }
           },
           clear: {
-            key: 'E',
+            key: 220,
             ctrlKey: true,
-            shiftKey: true,
             handler: function (range: RangeStatic, context: any) {
               if (!ref.current) return
               const quill = ref.current.getEditor()
@@ -75,7 +93,65 @@ const ReEditor: FunctionComponent<Props> = ({ value, onChange }) => {
             handler: function (range: RangeStatic, context: any) {
               if (!ref.current) return
               const quill = ref.current.getEditor()
-              quill.removeFormat(range.index, range.length)
+              quill.insertText(range.index, '\n')
+              quill.insertEmbed(range.index + 1, 'divider', true)
+              quill.setSelection(range.index + 2, range.length)
+            }
+          },
+          ordered: {
+            key: '7',
+            ctrlKey: true,
+            shiftKey: true,
+            handler: function (range: RangeStatic, context: any) {
+              if (!ref.current) return
+              const quill = ref.current.getEditor()
+              const format = quill.getFormat(range)
+              quill.format(
+                'list',
+                format.list
+                  ? format.list === 'bullet'
+                    ? 'ordered'
+                    : false
+                  : 'ordered'
+              )
+            }
+          },
+          bullet: {
+            key: '8',
+            ctrlKey: true,
+            shiftKey: true,
+            handler: function (range: RangeStatic, context: any) {
+              if (!ref.current) return
+              const quill = ref.current.getEditor()
+              const format = quill.getFormat(range)
+              quill.format(
+                'list',
+                format.list
+                  ? format.list === 'ordered'
+                    ? 'bullet'
+                    : false
+                  : 'bullet'
+              )
+            }
+          },
+          indent: {
+            key: 219,
+            ctrlKey: true,
+            handler: function (range: RangeStatic, context: any) {
+              if (!ref.current) return
+              const quill = ref.current.getEditor()
+              const format = quill.getFormat(range)
+              quill.format('indent', format.indent ? format.indent + 1 : 1)
+            }
+          },
+          outdent: {
+            key: 221,
+            ctrlKey: true,
+            handler: function (range: RangeStatic, context: any) {
+              if (!ref.current) return
+              const quill = ref.current.getEditor()
+              const format = quill.getFormat(range)
+              quill.format('indent', format.indent ? format.indent - 1 : false)
             }
           }
         }
