@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react'
-import ReactQuill from 'react-quill'
+import ReactQuill, { Quill } from 'react-quill'
 import { Delta, Sources } from 'quill'
 
 export interface Props {
