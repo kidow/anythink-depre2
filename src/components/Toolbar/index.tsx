@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { AiOutlineTable } from 'react-icons/ai'
 import { IoHelp } from 'react-icons/io5'
 import { FaDivide } from 'react-icons/fa'
 
@@ -26,36 +25,37 @@ const ReToolbar: FunctionComponent<Props> = () => {
         <button
           className="ql-list"
           value="ordered"
-          data-tip="번호 매기기 (Ctrl + Shift + 7)"
+          data-tip="번호 매기기 (Ctrl + Shift + 6)"
         />
         <button
           className="ql-list"
           value="bullet"
-          data-tip="글머리 기호 (Ctrl + Shift + 8)"
+          data-tip="글머리 기호 (Ctrl + Shift + Y)"
         />
         <button
           className="ql-indent"
           value="-1"
-          data-tip="내어쓰기 (Ctrl + ])"
+          data-tip="내어쓰기 (Ctrl + Shift + [)"
         />
         <button
           className="ql-indent"
           value="+1"
-          data-tip="들여쓰기 (Ctrl + [)"
+          data-tip="들여쓰기 (Ctrl + ])"
         />
       </div>
       <div className="ql-formats">
         <button className="ql-link" data-tip="링크 (Ctrl + K)" />
         <button className="ql-image" data-tip="이미지" />
         <button className="ql-video" data-tip="동영상" />
-        <button className="ql-table" data-tip="테이블">
-          <AiOutlineTable className="w-full" />
-        </button>
+        <button className="ql-table" data-tip="테이블" />
       </div>
       <div className="ql-formats">
         <button className="ql-blockquote" data-tip="인용구" />
         <button className="ql-code-block" data-tip="코드 블럭" />
-        <button className="ql-divider" data-tip="구분선 추가 (Ctrl + Enter)">
+        <button
+          className="ql-divider"
+          data-tip="구분선 추가 (Ctrl + Shift + Enter)"
+        >
           <FaDivide className="w-full" />
         </button>
       </div>
